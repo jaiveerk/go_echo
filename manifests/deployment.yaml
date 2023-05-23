@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: goecho
+  name: test-app
   labels:
-    app: goecho
+    app: test-app
+  namespace: test-namespace
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: goecho
+      app: test-app
   template:
     metadata:
       labels:
-        app: goecho
+        app: test-app
     spec:
       containers:
-        - name: goecho
-          image: goechovalidation.azurecr.io/goechoimage:latest
+        - name: test-app
+          image: test-image:latest
           ports:
-            - containerPort: 1323
+            - containerPort: 8080
